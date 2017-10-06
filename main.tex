@@ -1,0 +1,303 @@
+\documentclass[12pt,reqno,oneside]{pucthesis}
+
+%\draft
+
+\usepackage[left=4cm, top=3cm, bottom=4cm, right=2.5cm]{geometry}
+\usepackage[english]{babel}
+\usepackage{subfig}
+\usepackage{fancybox}
+\usepackage{float}
+\usepackage[T1]{fontenc}
+\usepackage{numprint}
+\npthousandsep{,}
+
+% Uncomment the following to use Times fonts, as required by the OGRS
+%\usepackage{mathptmx}
+\usepackage[usenames]{color}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[utf8]{inputenc}
+\usepackage{pdfpages}
+% \usepackage{hyperref}
+% \usepackage{apacite}
+%
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black,
+	citecolor=black,
+	filecolor=black,
+	urlcolor=black
+}
+
+\usepackage{booktabs}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{epic}
+\usepackage{eepic}
+\usepackage{url}
+\usepackage{algorithm2e}
+\usepackage{rotfloat}
+\usepackage{xspace}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{stmaryrd}
+\usepackage{cases}
+\usepackage{tikz}
+ \usetikzlibrary{trees}
+ \usetikzlibrary{shapes}
+ \usetikzlibrary{shapes.geometric,shapes}
+ \usetikzlibrary{positioning}
+ \usetikzlibrary{calc}
+ \usetikzlibrary{arrows}
+ \usetikzlibrary{shadows}
+\usepackage{tikz-qtree,tikz-qtree-compat}
+
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+           %   Preamble                                       %
+           %------------------------------------------------- %
+           %        \newcommand\...{...}                      %
+           %        \newtheorem{}{}[]                         %
+           %        \numberwithin{}{}                         %
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%--------- NEW ENVIRONMENTS ---------
+\newtheorem{definition}{\bf Definition}[chapter]
+\newtheorem{property}{Property}[chapter]
+\newtheorem{claim}{Claim}[chapter]
+\newtheorem{lemma}{\bf Lemma}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\newtheorem{theorem}{\noindent \bf Theorem}[chapter]
+\newtheorem{corollary}{\bf Corollary}[chapter]
+\newtheorem{pf}{Proof}[chapter]
+\newtheorem{example}{\bf Example}[chapter]
+\newtheorem{remark}{Remark}[chapter]
+
+%--------- PLACE ADDITIONAL ENVIRONMENTS/DEFINITIONS HERE ---------
+
+
+%----------------------------------------------------------------------%
+\begin{document}
+
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+           %                                                  %
+           %  INITIALISATIONS : Top Matter                    %
+           %                                                  %
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title[Optimization of semantic web queries]{Optimization of semantic
+  web queries using SPARQL pattern trees}
+
+\author{Andr\'es Ignacio Letelier Nagel}
+%
+\address{Escuela de Ingenier\'ia\\
+         Pontificia Universidad Cat\'olica de Chile\\
+         Vicu\~na Mackenna 4860\\
+         Santiago, Chile\\
+         {\it Tel.\/} : 56 (2) 354-2000}
+\email{letelier@gmail.com}
+%
+\facultyto    {the School of Engineering}
+\department   {}
+\faculty      {Faculty of Engineering}
+\degree       {Master of Science in Engineering}
+              % or {Doctor in Engineering Sciences}
+\advisor      {Marcelo Arenas S.}
+\committeememberA {Juan L. Reutter D.}
+%\committeememberB {Committee Member B (Optional)}
+\guestmemberA {Jorge P\'erez R.}
+%\guestmemberB {Guest Committee Member B (Optional)}
+\ogrsmember   {Andrés Guesalaga M.}
+\subject      {Engineering}
+\date         {September 2013}
+\copyrightname{Andr\'es Letelier Nagel}
+\copyrightyear{MMXIII}
+
+\dedication   {
+To Andrés Letelier, for putting this template on github
+}
+
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+           %   PRELIMINARIES                                  %
+           %--------------------------------------------------%
+           %      page i & ii: cover page                     %
+           %      page iii: dedication                        %
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\NoChapterPageNumber           % no header - footer on first page of chapter
+\pagenumbering{roman}
+\maketitle
+
+
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+           %   EXTRA PAGES                                    %
+           %--------------------------------------------------%
+           %      page --: not used                           %
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+%\thispagestyle{empty}
+
+%----------------------------------------------------------------------%
+
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+           %      page iv: ACKNOWLEDGEMENTS                   %
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter*{Acknowledgements}
+\input{acknowledgements}
+
+\cleardoublepage % In double-sided printing style makes the next page
+                 % a right-hand page, (i.e. a truly odd-numbered page
+                 % with respect to absolut counting), producing a blank
+                 % page if necessary. Added by MTT 20.AUG.2002
+
+%----------------------------------------------------------------------%
+
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+           %      page v & up ---                             %
+           %            Table of Contents                     %
+           %            List of Figures                       %
+           %            List of Tables                        %
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tableofcontents
+\listoftables
+\listoffigures
+
+\cleardoublepage % In double-sided printing style makes the next page
+                 % a right-hand page, (i.e. a truly odd-numbered page
+                 % with respect to absolut counting), producing a blank
+                 % page if necessary. Added by MTT 20.AUG.2002
+
+
+%----------------------------------------------------------------------%
+
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+           %      page x & xi: ABSTRACT - RESUMEN
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter*{Abstract}
+\label{ch:abstract}
+% \input{abstract}
+
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+           %   KEYWORDS                                       %
+           %--------------------------------------------------%
+           %      at the end of the abstract page             %
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+~\vfill
+{\bf Keywords:} \parbox[t]{.75\textwidth}{
+  SPARQL, RDF, Semantic Web, optimization, rewriting, database models
+}
+
+
+\chapter*{Resumen}
+\label{ch:resumen}
+% \input{resumen}
+
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+           %   PALABRAS CLAVES                                %
+           %--------------------------------------------------%
+           %      al final de la pagina de resumen            %
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+~\vfill
+{\bf Palabras Claves:} \parbox[t]{.75\textwidth}{
+  SPARQL, RDF, Web sem\'antica, optimizaci\'on, reescritura, modelos de bases de datos
+}
+
+
+\cleardoublepage % In double-sided printing style makes the next page
+                 % a right-hand page, (i.e. a truly odd-numbered page
+                 % with respect to absolut counting), producing a blank
+                 % page if necessary. Added by MTT 20.AUG.2002
+
+%======================================================================%
+
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+           %   TEXT  OF THESIS
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagenumbering{arabic}
+
+
+\chapter{Introduction}
+\label{chapter:introduction}
+\input{introduction}
+
+
+\chapter{Preliminaries}
+\label{chapter:preliminaries}
+\input{preliminaries}
+
+
+\chapter{Blabla}
+\label{chapter:blabla}
+\input{chapter}
+
+
+\chapter{Conclusions and future research}
+\label{chapter:conclusions}
+\input{conclusions}
+
+
+
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+           %   REFERENCES
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\nocite{*} % To make all the uncited references to appear in the bibliography.
+\bibliographystyle{apacite}
+
+
+{\setlength{\baselineskip}{0.8\baselineskip}
+% \bibliography{biblio}
+\par}
+
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+           %   APPENDICES
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newif\ifappendix
+\appendixtrue
+\ifappendix
+\appendix
+\clearpage
+\begingroup%
+\makeatletter%
+\let\clearpage\relax% Stop LaTeX from going to a new page; and
+\vspace*{\fill}%
+\vspace*{\dimexpr-50\p@-\baselineskip}% Remove the initial (default) 50pt gap (plus 1 line)
+\chapter*{APPENDIX}
+\vspace*{\fill}%
+\endgroup
+
+\chapter{ADDITIONAL PROOFS}
+
+
+\fi
+
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+           %   INDEX
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Uncomment the following lines to include an index.
+
+%% INSERT INDEX PAGE # IN TOC
+%%%\addtocounter{chapter}{1}
+%%%\addcontentsline{toc}{chapter}{\protect\numberline{\thechapter}{Index}}
+%%\addcontentsline{toc}{chapter}{\protect\numberline{}{Index}}
+%% NOTE: Insert "\label{IDX}" in '.ind' file after compiling the index
+%% with makeindex.
+%%\index{ @\label{IDX}}
+%% The above NOTE is not really needed as can be achieved by
+%% the trick below.
+%\addtocounter{page}{1}
+%\label{IDX}
+%\addtocounter{page}{-1}
+%\printindex
+
+%----------------------------------------------------------------------%
+
+\end{document}
