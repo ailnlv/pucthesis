@@ -14,4 +14,4 @@ biblio: biblio.bib
 	xelatex $(PDFLATEX_OPS) $(MAINFILE)
 
 clean:
-	-rm *.aux *.bbl *.blg *.dvi *.lof *.log *.lot *.out *.toc *.bak *.snm *.nav *.vrb *.fls *.fdb_latex_mk
+	-rm *.aux *.bbl *.blg *.dvi *.lof *.log *.lot *.out *.toc *.bak *.snm *.nav *.vrb *.fls *.fdb_latexmk
