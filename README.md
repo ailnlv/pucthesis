@@ -29,3 +29,10 @@ te echen de la universidad.
 ## Defiende
 
 Opcional.
+
+# Notas
+- Bibtex alega cuando no hay ningún `\cite` en el documento, así que `make all`
+reclama.
+- En mac al menos, parece haber un conflicto entre `pucthesis.cls` y los
+paquetes `tikz` y `todonotes`. Al compilar con `latex` o `pdflatex`, se genera
+un pdf que no se puede abrir. Compilar con `xelatex` soluciona todo.
